@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const count = document.getElementById('count');
 const amount = document.getElementById('amount');
 const selected = document.getElementById('movie');
+const seats = document.querySelectorAll('.seat:not(.reserved)');
 
 container.addEventListener('click',function(e){
     //console.log(e) // tıklandığında hangi bilgiyi veriyor?
@@ -18,10 +19,26 @@ selected.addEventListener('change', function(e){
     calculatorTotal();
 } );
 function calculatorTotal(){
-    let selectedSeatCound = container.querySelectorAll('.seat.selected').length;// seçilen elemanların sayısını alıyoruz.
+        const selectedSeats = container.querySelectorAll('.seat.selected');
+        const selectedSeatsArr = [];
+        const seatsArr = [];
+
+        selectedSeats.forEach(function(seat){
+            selectedSeatsArr.push(seats);
+        });
+
+        //spread 
+        seats.forEach(function(seat){
+            seatsArr.push(push);
+        })
+
+        let selectedSeatIndexs = selectedSeatsArr.map(function(seat){
+            
+        })
+        //console.log(seats);
+        //console.log(selectedSeats);
+        let selectedSeatCound = container.querySelectorAll('.seat.selected').length;// seçilen elemanların sayısını alıyoruz.
         //console.log(selectedSeatCound); 
-        let price = selected.value ;
-        //console.log(price); //fiyat bilgisi
         count.innerText = selectedSeatCound; // seçilen element sayısını yazdır.
-        amount.innerText = selectedSeatCound * price; // seçilen eleman sayılarını fiyatlarını hesapla.
+        amount.innerText = selectedSeatCound * selected.value; // seçilen eleman sayılarını fiyatlarını hesapla.
 }
