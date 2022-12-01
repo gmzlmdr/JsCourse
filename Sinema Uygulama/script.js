@@ -4,6 +4,9 @@ const amount = document.getElementById('amount');
 const select = document.getElementById('movie');
 const seats = document.querySelectorAll('.seat:not(.reserved)');
 
+getFromLocalStorage();
+calculatorTotal();
+
 container.addEventListener('click',function(e){
     //console.log(e) // tıklandığında hangi bilgiyi veriyor?
     //console.log(e.target); //hangi elemana tıklarsak o elemanın bilgileri bize gelir.
@@ -14,7 +17,7 @@ container.addEventListener('click',function(e){
     } 
 });
 
-selected.addEventListener('change', function(e){
+select.addEventListener('change', function(e){
     calculatorTotal();
 } );
 function calculatorTotal(){
@@ -34,7 +37,7 @@ function calculatorTotal(){
         let selectedSeatIndexs = selectedSeatsArr.map(function(seat){
             return seatsArr.indexOf(seat);
         })
-        console.log(selectedSeatIndexs);
+        //console.log(selectedSeatIndexs);
         //console.log(seats);
         //console.log(selectedSeats);
         let selectedSeatCound = container.querySelectorAll('.seat.selected').length;// seçilen elemanların sayısını alıyoruz.
@@ -48,9 +51,9 @@ function calculatorTotal(){
     function getFromLocalStorage(){
         const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
 
-        if (selectedSeats != null && selectedSeats > 0 ){
-            seats.foreach(function(seat,index) {
-                if(selectedSeats.indexOf(index) > -1 ){
+        if (selectedSeats !=null && selectedSeats.length > 0 ){
+            seats.forEach(function(seat, index) {
+                if (selectedSeats.indexOf(index) > -1) {
                     seat.classList.add('selected');
                 }
             })
