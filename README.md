@@ -1,2 +1,2 @@
-# JsCourse
+# JsProjetcs
 JavaScript projects
